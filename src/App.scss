@@ -1,0 +1,109 @@
+@import
+url('https://fonts.googleapis.com/css?family=EB+Garamond|Paytone+One&display=swap');
+$font-head: 'Paytone One', sans-serif;
+$font-body: 'Cutive Mono', monospace;
+
+
+$black: #373737;
+
+
+html {
+  box-sizing: borde-box;
+}
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  background: {
+    image: linear-gradient(45.34deg, #B28B67 5.66%, #000000 94.35%);
+    repeat: no-repeat;
+    attachment: fixed;
+  }
+  font-family: $font-body;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1em 2em;
+  background: rgba(255, 255, 255, .3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+  border-radius: .2em;
+
+  &__img {
+    max-width: 300px;
+    width: 100%;
+  }
+  &__content {
+    text-align: center;
+    color: $black;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+  }
+  &__title {
+    font-family: $font-head;
+    font-size: 1.7em;
+  }
+
+  &__btn {
+    display: inline-block;
+    width: 3em;
+    height: 3em;
+    position: relative;
+    transition: .2s;
+    transform: scale(.98);
+
+    &::after, &::before {
+      content: "";
+      width: 1.5em;
+      height: .3em;
+      position: absolute;
+      top: 40%;
+      background: $black;
+      border-radius: .2em;
+    }
+    &::after {
+      left: 45%;
+      transform: rotate(-30deg);
+    }
+    &::before {
+      right: 45%;
+      transform: rotate(30deg);
+    }
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.02);
+
+      &::before, &::after {
+        background: black;
+      }
+    }
+  }
+}
+
+.card--open {
+  .card__content {
+    max-height: 20em;
+  }
+  .card__btn {
+    transform: rotate(180deg);
+  }
+}
